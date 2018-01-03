@@ -1,17 +1,16 @@
 #!/usr/bin/env python
 # encoding: utf-8
-from server import server
 import pandas as pd
 import dash
 import dash_core_components as dcc
 import dash_html_components as dhc
 import plotly.graph_objs as go
 from dash.dependencies import Input, Output
-from gevent.pywsgi import WSGIServer
 
 
 filename = 'daily-house-deal.csv'
 df = pd.read_csv(filename)
+df = df[df.number > 0]
 districts = df.district.unique()
 house_types = df.house_type.unique()
 
@@ -19,9 +18,10 @@ house_types = df.house_type.unique()
 app = dash.Dash(
     'Chengdu House',
     sharing=True,
-    server=server,
     url_base_pathname='/'
 )
+server = app.server
+
 app.layout = dhc.Div([
     dhc.H1('成都各区每天房子销售情况'),
     dhc.Label('请选择地区及房子类型：'),

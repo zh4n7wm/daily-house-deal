@@ -1,7 +1,6 @@
 #!/usr/bin/env python
 # encoding: utf-8
-from server import server
-from app import app
+from app import server
 from gevent.pywsgi import WSGIServer
 
 
