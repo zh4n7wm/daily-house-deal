@@ -6,14 +6,13 @@
 
     $ python plot.py
 
-## Travis CI 配置
+## Heroku 部署
 
-该项目目前通过 Travis CI 的 `Cron Job` 定时抓取数据，并将结果文件 `push` 到 `github` 中。
+Travis CI 中的 `Cron Job` 不支持每天具体的时间点触发，只可以选择 `Daily/Hourly`等，所以，选用 `Heroku`。
 
-相关文档：
+Heroku 同时支持该项目的 Web 页面显示。
 
-- [Cron Jobs](https://docs.travis-ci.com/user/cron-jobs/)
-- [GitHub Releases Uploading](https://docs.travis-ci.com/user/deployment/releases/)
+部署过程参考官方文档，定时任务用了 `Heroku Scheduler addons`。
 
 ## 部署到服务器
 
@@ -21,7 +20,7 @@
 
 ### 安装项目依赖包
 
-    $ pip install requirements.txt
+    $ pip install -r requirements.txt
 
 ### 设置系统时区
 
