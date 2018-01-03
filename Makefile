@@ -1,11 +1,14 @@
 .PHONY: pip, fetch, clean
 
+TZ:=Asia/Shanghai
+export TZ
+
 pip:
 	pip install -r requirements.txt
 
 fetch:
 	@echo "Current datetime: $(shell date)"
-	python daily_deal.py
+	python daily_deal.py && git diff
 
 clean:
 	@echo "make clean ..."
