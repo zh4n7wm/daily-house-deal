@@ -8,7 +8,7 @@ pip:
 
 fetch:
 	@echo "Current datetime: $(shell date)"
-	python daily_deal.py && git diff
+	python daily_deal.py
 
 clean:
 	@echo "make clean ..."
