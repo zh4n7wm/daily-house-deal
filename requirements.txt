@@ -7,3 +7,4 @@ dash-core-components
 dash-html-components
 dash-renderer
 dash.ly
+gunicorn
