@@ -4,8 +4,8 @@
 1. install python package
 $ pip install requests lxml pandas
 
-2. setup crontab (OS using UTC)
-59 15 * * * cd /data/web/daily-house-deal && /home/wm/.virtualenvs/py3/bin/python daily_deal.py
+2. setup crontab (OS using `Asia/Shanghai`)
+58 2323 * * * cd /data/web/daily-house-deal && /home/wm/.virtualenvs/py3/bin/python daily_deal.py
 """
 import logging
 from logging import handlers

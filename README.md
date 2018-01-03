@@ -6,7 +6,16 @@
 
     $ python plot.py
 
-## 部署
+## Travis CI 配置
+
+该项目目前通过 Travis CI 的 `Cron Job` 定时抓取数据，并将结果文件 `push` 到 `github` 中。
+
+相关文档：
+
+- [Cron Jobs](https://docs.travis-ci.com/user/cron-jobs/)
+- [GitHub Releases Uploading](https://docs.travis-ci.com/user/deployment/releases/)
+
+## 部署到服务器
 
 ### 安装 pyenv
 
