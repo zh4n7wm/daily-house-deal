@@ -1,4 +1,4 @@
-.PHONY: pip, fetch, clean
+.PHONY: pip, fetch, clean, push
 
 TZ:=Asia/Shanghai
 export TZ
@@ -9,6 +9,10 @@ pip:
 fetch:
 	@echo "Current datetime: $(shell date)"
 	python daily_deal.py
+
+push: fetch
+	@echo "push latest csv file to github."
+	bash ./push-to-github.sh
 
 clean:
 	@echo "make clean ..."
