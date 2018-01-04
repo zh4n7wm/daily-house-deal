@@ -10,8 +10,8 @@ test -d "$DIR" && rm -rf "$DIR"
 REPO_URL="https://${GH_TOKEN}@github.com/ox0spy/daily-house-deal.git"
 
 # set git config
-git config user.name "Junkman"
-git config user.email "ox0spy@gmail.com"
+git config --global user.name "Junkman"
+git config --global user.email "ox0spy@gmail.com"
 
 git clone "$REPO_URL" "$DIR" && \
     cp daily-house-deal.csv "$DIR/" && \
