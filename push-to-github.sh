@@ -2,7 +2,7 @@
 
 # push csv file to github
 
-DIR="/tmp/daily-house-deal"
+DIR="/tmp/.daily-house-deal"
 
 test -d "$DIR" && rm -rf "$DIR"
 
