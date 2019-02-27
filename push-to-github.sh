@@ -6,6 +6,7 @@ DIR="/tmp/.daily-house-deal"
 
 test -d "$DIR" && rm -rf "$DIR"
 
+source .envrc
 # GH_TOKEN 作为环境变量，在其它地方复制
 REPO_URL="https://${GH_TOKEN}@github.com/ox0spy/daily-house-deal.git"
 

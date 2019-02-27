@@ -105,3 +105,6 @@ backtradercn.tar.gz
 
 # vs code
 .vscode/
+
+# direnv
+.envrc
