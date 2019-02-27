@@ -5,7 +5,7 @@
 $ pip install requests lxml pandas
 
 2. setup crontab (OS using `Asia/Shanghai`)
-58 2323 * * * cd /data/web/daily-house-deal && /home/wm/.virtualenvs/py3/bin/python daily_deal.py
+50 23 * * * cd /data/web/daily-house-deal && /home/wm/.virtualenvs/py3/bin/python daily_deal.py
 """
 import logging
 from logging import handlers
@@ -37,7 +37,7 @@ logger.addHandler(handler)
 
 
 def get_daily_deal():
-    url = 'http://www.cdfgj.gov.cn/SCXX/Default.aspx'
+    url = 'https://www.cdfgj.gov.cn/SCXX/Default.aspx?action=ucEveryday'
     headers = {
         'Accept-Language': 'en-US,en;q=0.8,zh-CN;q=0.6,zh;q=0.4',
         'User-Agent': 'Mozilla/5.0 (Macintosh; Intel Mac OS X 10_12_6) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/59.0.3071.115 Safari/537.36',
@@ -45,15 +45,15 @@ def get_daily_deal():
     req = requests.get(url, headers=headers)
     charset = req.encoding or 'utf-8'
     tree = html.fromstring(req.content.decode(charset))
-    td_count = 4
+    td_count = 5
     tmp = [x.strip() for x in tree.xpath('//tr[@bgcolor="#FFFFFF"]/td/text()')]
     data = list(zip(*(iter(tmp),) * td_count))
     res = []
-    if len(data) != 12:
+    if len(data) != 6:
         logger.warning('Something wrong, you need check web page.')
     else:
         for i, x in enumerate(data):
-            house_type = '新盘' if i < 6 else '二手房'
+            house_type = '新盘' if i < 3 else '二手房'
             res.append({
                 'date': datetime.now().isoformat(),
                 'house_type': house_type,

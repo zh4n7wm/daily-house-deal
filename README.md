@@ -2,6 +2,8 @@
 
 从政府网站抓取每天各城区的房子销售情况，目前只抓取了成都时公布的各城区数据。
 
+数据获取地址：https://www.cdfgj.gov.cn/SCXX/Default.aspx?action=ucEveryday
+
 ## 本地分析
 
     $ python plot.py
@@ -74,6 +76,6 @@ Heroku 同时支持该项目的 Web 页面显示。
 每晚23:58:00 自动抓取数据，crontab 设置如下：
 
     # m h  dom mon dow   command
-    58 23 * * * cd /data/web/daily-house-deal && /data/pyenv/versions/3.6.3/envs/daily-house-deal/bin/python daily_deal.py && sudo supervisorctl restart daily-house-deal
+    50 23 * * * cd /data/web/daily-house-deal && /data/pyenv/versions/3.6.3/envs/daily-house-deal/bin/python daily_deal.py && sudo supervisorctl restart daily-house-deal
 
 注：通过 dash 写了个简单的展示页面，每次更新完数据，重启服务，让它基于最新数据展示。
