@@ -3,7 +3,7 @@ import pandas as pd
 import matplotlib.pyplot as plt
 
 
-df = pd.read_csv(pathlib.Path('~/Downloads/daily-house-deal.csv'), parse_dates=True, index_col='date')
+df = pd.read_csv(pathlib.Path('daily-house-deal.csv'), parse_dates=True, index_col='date')
 
 def plot(house_type='新盘'):
     fig, ax = plt.subplots()
