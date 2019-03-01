@@ -19,3 +19,5 @@ git clone "$REPO_URL" "$DIR" && \
     cd "$DIR" && \
     git commit -m "update csv file." daily-house-deal.csv && \
     git push origin master
+
+rm -rf "$DIR"
