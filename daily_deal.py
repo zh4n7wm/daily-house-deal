@@ -11,7 +11,7 @@ import logging
 from logging import handlers
 import requests
 import pandas as pd
-from datetime import datetime
+from datetime import datetime, date
 from pathlib import Path
 from lxml import html
 
@@ -60,7 +60,8 @@ def get_daily_deal():
                 'district': x[0],
                 'total_area': float(x[1]),
                 'number': int(x[2]),
-                'area': float(x[3]),  # 商品住宅面积 或者 二手住宅面积
+                'residential_area': float(x[3]),  # 商品住宅面积 或者 二手住宅面积
+                'non_residential_area': float(x[4]),  # 商品住宅面积 或者 二手住宅面积
             })
 
     return res
@@ -69,10 +70,22 @@ def get_daily_deal():
 if __name__ == '__main__':
     logger.debug('get house deal information.')
     res = get_daily_deal()
-    df = pd.DataFrame(res)
-    df = df[['date', 'district', 'house_type', 'total_area', 'number', 'area']]
-    with open('./daily-house-deal.csv', 'a') as fd:
+    header = [
+        'date', 'district', 'house_type', 'total_area', 'number',
+        'residential_area', 'non_residential_area'
+    ]
+    new_df = pd.DataFrame(res)
+    new_df = new_df[header]
+    csv_path = './daily-house-deal.csv'
+    df = pd.read_csv(csv_path)
+    today = date.today()
+    if pd.to_datetime(df.date).dt.date.iloc[-1] == today:
+        logger.debug('remove today old data...')
+        delete_lst = df[pd.to_datetime(df.date).dt.date == today].index
+        df.drop(delete_lst, inplace=True)
+    df = df.append(new_df)
+    with open(csv_path, 'w') as fd:
         logger.debug('save to csv file.')
-        df.to_csv(fd, index=False, header=False)
+        df.to_csv(fd, index=False, header=True)
     logger.debug('done.')
     # print(json.dumps(res, indent=4, ensure_ascii=False))
