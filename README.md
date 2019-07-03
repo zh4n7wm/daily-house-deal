@@ -2,7 +2,7 @@
 
 从政府网站抓取每天各城区的房子销售情况，目前只抓取了成都市公布的各城区数据。
 
-数据获取地址：https://www.cdfgj.gov.cn/SCXX/Default.aspx?action=ucEveryday
+数据获取地址：http://zw.cdzj.chengdu.gov.cn/py/SCXX/Default.aspx?action=ucEveryday
 
 ## 本地分析
 

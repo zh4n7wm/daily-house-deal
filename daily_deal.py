@@ -37,7 +37,7 @@ logger.addHandler(handler)
 
 
 def get_daily_deal():
-    url = 'https://www.cdfgj.gov.cn/SCXX/Default.aspx?action=ucEveryday'
+    url = 'http://zw.cdzj.chengdu.gov.cn/py/SCXX/Default.aspx?action=ucEveryday'
     headers = {
         'Accept-Language': 'en-US,en;q=0.8,zh-CN;q=0.6,zh;q=0.4',
         'User-Agent': 'Mozilla/5.0 (Macintosh; Intel Mac OS X 10_12_6) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/59.0.3071.115 Safari/537.36',
