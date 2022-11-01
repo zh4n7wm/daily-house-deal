@@ -23,8 +23,8 @@ jobs:
           if [ -f requirements.txt ]; then pip install -r requirements.txt; fi
       - name: update csv
         run: |
-          python daily_deal.py \
-              && git config user.email "$GITHUB_ACTOR@users.noreply.github.com" \
-              && git config --global user.name "$GITHUB_ACTOR" \
-              && git commit 'update csv file' daily-house-deal.csv \
-              && git push origin master
+          python daily_deal.py
+
+      - uses: stefanzweifel/git-auto-commit-action@v4
+        with:
+          commit_message: update csv
