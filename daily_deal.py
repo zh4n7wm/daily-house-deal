@@ -8,13 +8,13 @@ $ pip install requests lxml pandas
 50 23 * * * cd /data/web/daily-house-deal && /home/wm/.virtualenvs/py3/bin/python daily_deal.py
 """
 import logging
+from datetime import date, datetime
 from logging import handlers
-import requests
-import pandas as pd
-from datetime import datetime, date
 from pathlib import Path
-from lxml import html
 
+import pandas as pd
+import requests
+from lxml import html
 
 LOG_FILENAME = '/tmp/logs/house/daily_deal.log'
 p = Path(LOG_FILENAME)
@@ -37,7 +37,7 @@ logger.addHandler(handler)
 
 
 def get_daily_deal():
-    url = 'http://zw.cdzj.chengdu.gov.cn/py/SCXX/Default.aspx?action=ucEveryday'
+    url = 'https://zw.cdzjryb.com/SCXX/Default.aspx?action=ucEveryday2'
     headers = {
         'Accept-Language': 'en-US,en;q=0.8,zh-CN;q=0.6,zh;q=0.4',
         'User-Agent': 'Mozilla/5.0 (Macintosh; Intel Mac OS X 10_12_6) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/59.0.3071.115 Safari/537.36',
