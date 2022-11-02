@@ -1,9 +1,9 @@
 name: Daily Update CSV
 
 on:
-  workflow_dispatch:
   schedule:
     - cron: "55 15 * * *"
+  # workflow_dispatch:
 
 jobs:
   update-csv:
