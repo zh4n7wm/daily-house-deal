@@ -2,7 +2,7 @@ gevent
 requests
 lxml
 pandas
-dash==0.37.0
+dash==2.15.0
 dash-core-components==0.43.1
 dash-html-components==0.13.5
 plotly==3.6.1
